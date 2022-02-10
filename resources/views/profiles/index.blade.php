@@ -9,10 +9,11 @@
         <div class="col-8 pt-3">
             <div class="justify-content-between align-items-baseline row">
                 <h2 class="col-lg-9">{{$user->username}}</h2>
-                <a href="#" class="fs-5 col-lg-2 text-decoration-none text-primary">New Post</a>
+                <a href="/p/create" class="fs-5 col-lg-2 text-decoration-none text-primary">New Post</a>
+                <a href="/profile/{{$user->id}}/edit" class="fs-6 text-decoration-none text-primary">Edit profile</a>
             </div>
             <div class="row">
-                <div class="col-2"><strong class="p-1">23</strong>posts</div>
+                <div class="col-2"><strong class="p-1">{{ $user->posts->count() }}</strong>posts</div>
                 <div class="col-2"><strong class="p-1">203</strong>followers</div>
                 <div class="col-2"><strong class="p-1">63</strong>following</div>
             </div>
@@ -28,19 +29,13 @@
     </div>
     <div class="row pt-4 "> <hr></div>
     <div class="row ">
-        <div class="col-4 pb-1">
-            <img src="/img/post2.png" class="rounded" style="width:300px;" href="#">
-        </div>
-        <div class="col-4 pb-1">
-            <img src="/img/profile2.png" class="rounded" style="width:300px;" href="#">
-        </div>
-        <div class="col-4 pb-1">
-            <img src="/img/post2.png" class="rounded" style="width:300px;" href="#">
-        </div>
-        <div class="col-4 pb-1">
-            <img src="/img/profile2.png" class="rounded" style="width:300px;" href="#">
-        </div>
-        
+        @foreach($user->posts as $post)
+            <div class="col-4 pb-1">
+                <a href="/p/{{$post->id}}">
+                <img src="/storage/{{ $post->img }}" class="rounded" style="width:300px;" alt="{{ $post->caption }}" href="#">
+                </a>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection
