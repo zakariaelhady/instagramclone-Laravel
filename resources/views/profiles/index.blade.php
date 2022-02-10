@@ -7,8 +7,9 @@
             <img src="/img/post1.jpeg " class="rounded-circle" style="width: 155px; height: 155px;">
         </div>
         <div class="col-8 pt-3">
-            <div>
-                <h2>{{$user->username}}</h2>
+            <div class="justify-content-between align-items-baseline row">
+                <h2 class="col-lg-9">{{$user->username}}</h2>
+                <a href="#" class="fs-5 col-lg-2 text-decoration-none text-primary">New Post</a>
             </div>
             <div class="row">
                 <div class="col-2"><strong class="p-1">23</strong>posts</div>
