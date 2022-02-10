@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container mx-auto col-8">
                 <a class="navbar-brand d-flex " href="{{ url('/') }}">
-                    <div class="container mr-5"><img src="img/tag.png" alt="logo"  style="height:30px; "></div>
+                    <div class="container mr-5"><img src="/img/tag.png" alt="logo"  style="height:30px; "></div>
                     <div class="container pl-5 pt-1" style=" border-left: 2px solid gray;">Megagram</div> 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -55,7 +55,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->username }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
