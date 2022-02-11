@@ -37,4 +37,9 @@ class postcontroller extends Controller
             'post'=>$post
         ]);
     }
+    public function index(){
+        $users=auth()->user()->following()->pluck('profiles.user_id');
+        $posts=post::whereIn('user_id',$users)->latest()->paginate(5);
+        return view('posts.index',compact('posts'));
+    }
 }

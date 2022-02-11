@@ -18153,12 +18153,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['userid', 'follows'],
   mounted: function mounted() {
     console.log('Component mounted.');
   },
+  data: function data() {
+    return {
+      status: this.follows
+    };
+  },
   methods: {
     followuser: function followuser() {
-      axios.post('');
+      var _this = this;
+
+      axios.post('/follow/' + this.userid).then(function (response) {
+        _this.status = !_this.status;
+      })["catch"](function (errors) {
+        if (errors.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    }
+  },
+  computed: {
+    buttontext: function buttontext() {
+      return this.status ? 'Unfollow' : 'Follow';
     }
   }
 });
@@ -18186,8 +18205,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "col-lg-2 btn btn-primary",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.followuser && $options.followuser.apply($options, arguments);
+    }),
+    onVText: _cache[1] || (_cache[1] = function () {
+      return $options.buttontext && $options.buttontext.apply($options, arguments);
     })
-  }, "Follow")]);
+  }, "Follow", 32
+  /* HYDRATE_EVENTS */
+  )]);
 }
 
 /***/ }),
