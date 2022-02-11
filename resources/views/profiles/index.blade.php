@@ -8,7 +8,9 @@
         </div>
         <div class="col-8 pt-3">
             <div class="justify-content-between align-items-baseline row">
-                <h2 class="col-lg-9">{{$user->username}}</h2>
+                <h2 class="col-lg-7">{{$user->username}}</h2>
+                <div id="vuejs" ><example-component userid="{{$user->id}}" follows="{{$follows}}">
+                </example-component></div>
                 @can('update',$user->profile)
                 <a href="/p/create" class="fs-5 col-lg-2 text-decoration-none text-primary">New Post</a>
                 <a href="/profile/{{$user->id}}/edit" class="fs-6 text-decoration-none text-primary">Edit profile</a>
@@ -16,8 +18,8 @@
             </div>
             <div class="row">
                 <div class="col-2"><strong class="p-1">{{ $user->posts->count() }}</strong>posts</div>
-                <div class="col-2"><strong class="p-1">203</strong>followers</div>
-                <div class="col-2"><strong class="p-1">63</strong>following</div>
+                <div class="col-2"><strong class="p-1">{{ $user->profile->followers->count() }}</strong>followers</div>
+                <div class="col-2"><strong class="p-1">{{ $user->following->count() }}</strong>following</div>
             </div>
             <div class="pt-4 fs-6"><strong>{{$user->name}}</strong> </div>
             <div class="row">
