@@ -35,6 +35,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    
     /**
      * The attributes that should be cast.
      *
@@ -44,6 +45,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(
+            function ($user){
+                $user->profile()->create();
+            }
+        );
+    }
     public function posts(){
         return $this->hasMany(post::class)->orderBy('created_at','DESC');
     }
