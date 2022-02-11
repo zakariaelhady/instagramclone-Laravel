@@ -4,7 +4,7 @@
 <div class="container mx-auto col-8">
     <div class="row mx-auto">
         <div class="col-3 px-5 pt-3 mx-2">
-            <img src="/storage/{{$user->profile->img}} " class="rounded-circle" style="width: 155px; height: 155px;">
+            <img src="{{$user->profile->profileImg()}} " class="rounded-circle" style="width: 155px; height: 155px;">
         </div>
         <div class="col-8 pt-3">
             <div class="justify-content-between align-items-baseline row">
