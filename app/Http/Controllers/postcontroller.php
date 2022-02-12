@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class postcontroller extends Controller
 {
@@ -38,8 +40,9 @@ class postcontroller extends Controller
         ]);
     }
     public function index(){
+        $allusers=User::where('id', '!=', Auth::user()->id)->get();
         $users=auth()->user()->following()->pluck('profiles.user_id');
         $posts=post::whereIn('user_id',$users)->latest()->paginate(5);
-        return view('posts.index',compact('posts'));
+        return view('posts.index',compact('posts','allusers'));
     }
 }

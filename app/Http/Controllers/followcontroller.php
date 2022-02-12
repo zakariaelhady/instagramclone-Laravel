@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
-use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
-class followcontrolle extends Controller
+class followcontroller extends Controller
 {
     public function __construct()
     {
@@ -14,5 +12,7 @@ class followcontrolle extends Controller
     }
     public function store(User $user){
         return auth()->user()->following()->toggle($user->profile);
+        // return $user->username;
+        
     }
 }

@@ -1,23 +1,21 @@
 <template>
-    <div class="container">
-        <button class=" col-lg-2 btn btn-primary " @click="followuser" @v-text="buttontext" >Follow</button>
-    </div>
+    <button class="  btn btn-primary "  @click="followuser" v-text="buttontext"  ></button>
 </template>
 
 <script>
     export default {
-        props:['userid','follows'],
+        
         mounted() {
             console.log('Component mounted.')
         },
         data:function(){
             return{
-                status:this.follows,
+                status:window.follows,
             }
         },
         methods:{
             followuser(){
-                axios.post('/follow/'+this.userid)
+                axios.post('/follow/'+window.userid)
                 .then(
                     response=>{
                         this.status=! this.status;
@@ -38,5 +36,5 @@
         }
         
     }
-
 </script>
+

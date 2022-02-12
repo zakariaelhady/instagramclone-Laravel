@@ -9,8 +9,9 @@
         <div class="col-8 pt-3">
             <div class="justify-content-between align-items-baseline row">
                 <h2 class="col-lg-7">{{$user->username}}</h2>
-                <div id="vuejs" ><example-component userid="{{$user->id}}" follows="{{$follows}}">
-                </example-component></div>
+                @if(auth()->user()->id!=$user->id)
+                <span class="col-lg-2" id="vuejs"></span>
+                @endif
                 @can('update',$user->profile)
                 <a href="/p/create" class="fs-5 col-lg-2 text-decoration-none text-primary">New Post</a>
                 <a href="/profile/{{$user->id}}/edit" class="fs-6 text-decoration-none text-primary">Edit profile</a>
@@ -43,3 +44,7 @@
     </div>
 </div>
 @endsection
+<script>
+    window.userid="{{$user->id}}";
+    window.follows="{{$follows}}";
+</script>

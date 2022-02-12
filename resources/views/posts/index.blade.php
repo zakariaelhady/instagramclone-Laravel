@@ -57,6 +57,23 @@
             </tbody>
         </table>
     </div>
+    <div class="container">
+        <div class="row fw-bold fs-4 pt-2">You can start by following some people (click on them to check their profile)</div>
+        @foreach($allusers as $user)
+        <div class="row w-50 pt-3">
+            <div class="col-lg-2 px-1 pt-1 mx-2">
+                <a href="/profile/{{$user->id}}">
+                <img src="/storage/{{$user->profile->img}}" class="rounded-circle" style="width: 50px; height: 50px;"></a>
+            </div>
+            <div class="col-lg-8 px-1 pl-3">
+                <p class=" fw-bold fs-6">
+                    <a href="/profile/{{$user->id}}" class="text-decoration-none text-dark">{{$user->username}}<br/>{{$user->profile->category}}</a>
+                </p>
+            </div>
+        </div>
+        <hr>
+        @endforeach
+    </div>
     @else
     @foreach($posts as $post)
     
